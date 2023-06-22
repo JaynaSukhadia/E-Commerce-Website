@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="admin/template">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | DataTables</title>
+
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+ 
+  <div layout:fragment="content1">
+  <!-- Content Wrapper. Contains page content -->
+  
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Order Detail List</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"><a href="/orderdetail/list">Order Detail</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+            
+
+            <div class="card">
+              <div class="card-header">
+                <a href="/orderdetail/new"><button class="btn btn-sm btn-primary">  Add New Order Detail</button></a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+             <tr>
+                <th>ID</th>
+                
+                <th>ORDER</th>
+                <th>PRODUCT</th>
+                <th>QUANTITY</th>
+                
+                <th>RATE</th>
+                <th>AMOUNT</th>
+                
+                <th>ACTION</th>
+            </tr>
+        </thead>
+          <tbody>
+                <tr th:each="orderDetail : ${list}">
+                    <td th:text="${orderDetail.id}"></td>
+                    <td th:text="${orderDetail.orderMaster.user.fname}"></td>
+                    <td th:text="${orderDetail.product.name}"></td>
+                    
+                    <td th:text="${orderDetail.qty}"></td>
+                    <td th:text="${orderDetail.rate}"></td>
+                     <td th:text="${orderDetail.amount}"></td>
+                    
+                    
+                    <td style="width:160px"><a th:href="@{/orderdetail/edit/{id}(id=${orderDetail.id})}"><button class="btn btn-sm btn-success"> Update </button></a>
+                    <a th:href="@{/orderdetail/delete/{id}(id=${orderDetail.id})}" onclick="return confirm('Do you want to Delete?')"><button class="btn btn-sm btn-danger">Delete </button></a></td>
+                </tr>
+                
+            </tbody>
+                  <tfoot>
+                  <tr>
+                <th>ID</th>
+                
+                <th>ORDER</th>
+                <th>PRODUCT</th>
+                <th>QUANTITY</th>
+                
+                <th>RATE</th>
+                <th>AMOUNT</th>
+                
+                <th>ACTION</th>
+            </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+<!-- ./wrapper -->
+<!-- jQuery -->
+
+<!-- Page specific script -->
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="zxx"
+xmlns:th="http://www/thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="template">
+
+
+
+<body>
+  <div layout:fragment="content1">  
+
+   
+
+    
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="login-form">
+                        <h2>Forgot Password</h2>
+                        <form th:action="@{/update_forgot_pass}"  th:object="${user}" method="post">
+                            <div class="group-input">
+                                <input type="email" class="form-control" th:field="*{email}" id="email"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                    
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone else.</small>
+                            
+                            </div>
+                           
+                            <button type="submit" class="site-btn login-btn">Submit </button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+
+   </div>
+   
+    <div th:if="${session.msg != null}">
+   <script type="text/javascript">
+   		alert("[[${session.msg}]]")
+   		</script>
+   
+   <div th:text="${@sessionUtilityBean.removeVerificationMessageFromSession()}"></div>
+</div>
+</body>
+
+</html>

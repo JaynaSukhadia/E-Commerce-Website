@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="admin/template">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | DataTables</title>
+
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+ 
+  <div layout:fragment="content1">
+  <!-- Content Wrapper. Contains page content -->
+  
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Facility List</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"><a href="/facility/list">Facility</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+            
+
+            <div class="card">
+              <div class="card-header">
+                <a href="/facility/new"><button class="btn btn-sm btn-primary">  Add New facility</button></a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+             <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>DETAIL</th>
+                <th>ICON</th>
+              
+                <th>ACTION</th>
+            </tr>
+        </thead>
+          <tbody>
+                <tr th:each="facility : ${list}">
+                    <td th:text="${facility.id}"></td>
+                    <td th:text="${facility.title}"></td>
+                    <td th:text="${facility.detail}"></td>
+                    <td><img th:src="${facility.PhotosImagePath}" width=80px height=80px/></td>
+                    
+                    
+                    
+                    <td style="width:160px"><a th:href="@{/facility/edit/{id}(id=${facility.id})}"><button class="btn btn-sm btn-success"> Update </button></a>
+                    <a th:href="@{/facility/delete/{id}(id=${facility.id})}" onclick="return confirm('Do you want to Delete?')"><button class="btn btn-sm btn-danger">Delete </button></a></td>
+                </tr>
+                
+            </tbody>
+                  <tfoot>
+                  <tr>
+              <th>ID</th>
+                <th>TITLE</th>
+                <th>DETAIL</th>
+                <th>ICON</th>
+              
+                <th>ACTION</th>
+                
+               
+            </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+<!-- ./wrapper -->
+<!-- jQuery -->
+
+<!-- Page specific script -->
+
+</body>
+</html>
